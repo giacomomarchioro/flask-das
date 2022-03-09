@@ -1,0 +1,15 @@
+{# templates/macros.html #}
+{# Render lap form.
+
+This macro is used for generating the condition statements, for more information
+visit https://www.rmedgar.com/blog/dynamic-fields-flask-wtf/
+
+Arguments:
+    - subform: Form object to render
+    - index: Index of the form.
+#}
+{%- macro reder_condition_form(subform, index) %}
+    <div id="conditions-{{ index }}-form" {% if index == '_' %}hidden{% endif %} data-index="{{ index }}">
+        {{ subform.booleanoperator}} {{ subform.filteroperator}} {{subform.searchtext}} <button type="button" onclick="return this.parentNode.remove();">Remove</button>
+    </div>
+{%- endmacro %}

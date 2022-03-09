@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{{url_for('static', filename='AddCondition.js')}}"></script>
+</head>
+<body>
+{% from 'macros.html' import reder_condition_form %}
+
+<form method="post" action="">
+    {{ form.hidden_tag() }}
+    <br/>
+    <div id="search_conditions">
+    {% for condition in form.conditions %}
+        {{reder_condition_form(condition, loop.index0)}}      
+    {% endfor %}
+    </div>
+    <button onclick="AddCondition()" type="button">Add Condition</button> <input type="submit" value="Send Form"/>
+</form>
+
+{% if form.errors %}
+{{ form.errors }}
+{% endif %}
+
+{# Form template #}
+{{ reder_condition_form(template_form, '_') }}   
+</body>
+</html>
+
